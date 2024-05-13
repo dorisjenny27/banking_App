@@ -5,9 +5,11 @@ import { INSTRUMENTATION_HOOK_FILENAME } from 'next/dist/lib/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Footer from './Footer'
 
 const Sidebar = ({ user }: SidebarProps) => {
     const pathname = usePathname();
+    console.log("userdata: ", user)
   return (
     <section className="sidebar">
         <nav className="flex flex-col gap-4">
@@ -20,9 +22,7 @@ const Sidebar = ({ user }: SidebarProps) => {
                     alt="Horizon logo"
                     className="size-[24px] max-xl:size-14"
                 />
-                <h1 className="sidebar-logo">
-                    Horizon
-                </h1>
+                <h1 className="sidebar-logo">Horizon</h1>
             </Link>
 
             {sidebarLinks.map((item) => {
@@ -41,8 +41,7 @@ const Sidebar = ({ user }: SidebarProps) => {
                             />
                         </div>
                         <p className={cn('sidebar-label', {
-                            '!text-white' : isActive
-                        })}>
+                            "!text-white" : isActive })}>
                             {item.label}
                         </p>
                     </Link>
@@ -52,7 +51,7 @@ const Sidebar = ({ user }: SidebarProps) => {
             USER
             </nav>
 
-            FOOTER     
+            <Footer user={user} />
     </section>
   )
 }
